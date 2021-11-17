@@ -4,6 +4,15 @@ import { resolve } from 'path';
 import util from 'util';
 import { exec } from 'child_process';
 
+// To run the script you can execute the file with an optional CLI arg
+//
+// Pass an optional path to start
+//    path=SOME_DIR_PATH
+// Otherwise the path is the working directory
+//
+// Example:
+// node install-all-node-modules.mjs path=/Users/some_user/Documents/test/
+
 (async () => {
   const execAsync = util.promisify(exec);
 

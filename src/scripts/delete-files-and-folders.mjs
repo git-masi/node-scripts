@@ -1,7 +1,8 @@
 // rm requires node v14.14.0 or higher
 import { readdir, rm } from 'fs/promises';
-import { cwd, argv } from 'process';
+import { argv } from 'process';
 import { resolve, extname } from 'path';
+import { getPathFromArgs } from '../utils/cli-args.mjs';
 
 // To run the script you will need to execute the file with some CLI args
 //
@@ -23,29 +24,11 @@ import { resolve, extname } from 'path';
 
 (async () => {
   try {
-    const validCliOptions = { path: 'path=' };
     const args = argv.slice(2);
-    const startingPath = getStartingPath();
-    const removeList = getRemoveList();
+    const startingPath = getPathFromArgs();
+    const removeList = args.filter((arg) => !arg?.startsWith?.('path='));
 
     await removeListedFileSystemEntries(startingPath);
-
-    function getStartingPath() {
-      const { path: pathOption } = validCliOptions;
-      const cliPath = args.find((arg) => arg.startsWith(pathOption));
-
-      if (cliPath) return cliPath.replace(pathOption, '');
-
-      return cwd();
-    }
-
-    function getRemoveList() {
-      const options = Object.values(validCliOptions);
-
-      return args.filter(
-        (arg) => !options.some((option) => arg.startsWith(option))
-      );
-    }
 
     async function removeListedFileSystemEntries(path) {
       const contents = await readdir(path, { withFileTypes: true });

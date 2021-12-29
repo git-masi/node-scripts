@@ -1,10 +1,11 @@
 import { mkdir, readFile, stat, writeFile } from 'fs/promises';
-import { cwd } from 'process';
-import { execAsync } from './src/utils/execAsync';
+import { getPathFromArgs } from '../utils/cli-args.mjs';
+import { execAsync } from '../utils/exec.mjs';
 
+// Pass in the project directory via CLI arg path=SOME_DIR_PATH
 (async () => {
   try {
-    const projectDirPath = cwd();
+    const projectDirPath = getPathFromArgs();
     const vscodeDirPath = `${projectDirPath}/.vscode`;
     const settingsFilePath = `${vscodeDirPath}/settings.json`;
     const editorSettings = {

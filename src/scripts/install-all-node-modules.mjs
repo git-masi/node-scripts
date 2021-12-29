@@ -1,7 +1,7 @@
 import { readdir } from 'fs/promises';
-import { cwd, argv } from 'process';
 import { resolve } from 'path';
-import { execAsync } from './src/utils/execAsync';
+import { execAsync } from '../utils/exec.mjs';
+import { getPathFromArgs } from '../utils/cli-args.mjs';
 
 // To run the script you can execute the file with an optional CLI arg
 //
@@ -14,20 +14,9 @@ import { execAsync } from './src/utils/execAsync';
 
 (async () => {
   try {
-    const validCliOptions = { path: 'path=' };
-    const args = argv.slice(2);
-    const startingPath = getStartingPath();
+    const startingPath = getPathFromArgs();
 
     await installNodeModules(startingPath);
-
-    function getStartingPath() {
-      const { path: pathOption } = validCliOptions;
-      const cliPath = args.find((arg) => arg.startsWith(pathOption));
-
-      if (cliPath) return cliPath.replace(pathOption, '');
-
-      return cwd();
-    }
 
     async function installNodeModules(path) {
       const contents = await readdir(path, { withFileTypes: true });

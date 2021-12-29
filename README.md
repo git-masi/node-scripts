@@ -22,6 +22,14 @@ Run your script anywhere using `runns SCRIPT_NAME_HERE`
 
 For help use `runns --help`
 
+You may also wish to add this alias to make reloading your terminal easier
+
+```
+alias zshreload="source ~/.zshrc"
+```
+
+And make sure you have the [load-nvmrc script](https://github.com/nvm-sh/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
+
 ## Why
 
 Because life is too short to learn bash scripting!

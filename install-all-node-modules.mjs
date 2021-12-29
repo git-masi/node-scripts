@@ -1,8 +1,7 @@
 import { readdir } from 'fs/promises';
 import { cwd, argv } from 'process';
 import { resolve } from 'path';
-import util from 'util';
-import { exec } from 'child_process';
+import { execAsync } from './src/utils/execAsync';
 
 // To run the script you can execute the file with an optional CLI arg
 //
@@ -14,8 +13,6 @@ import { exec } from 'child_process';
 // node install-all-node-modules.mjs path=/Users/some_user/Documents/test/
 
 (async () => {
-  const execAsync = util.promisify(exec);
-
   try {
     const validCliOptions = { path: 'path=' };
     const args = argv.slice(2);

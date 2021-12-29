@@ -1,0 +1,23 @@
+{
+  "name": "emasi-node-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretty": "prettier --write \"./**/*{.js,.mjs}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/git-masi/emasi-node-scripts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/git-masi/emasi-node-scripts/issues"
+  },
+  "homepage": "https://github.com/git-masi/emasi-node-scripts#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}

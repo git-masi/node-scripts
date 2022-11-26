@@ -9,6 +9,8 @@ import { execAsync } from '../utils/exec.mjs';
     const vscodeDirPath = `${projectDirPath}/.vscode`;
     const settingsFilePath = `${vscodeDirPath}/settings.json`;
     const editorSettings = {
+      'go.testOnSave': true,
+      'go.lintOnSave': 'package',
       'editor.defaultFormatter': 'esbenp.prettier-vscode',
       '[javascript]': {
         'editor.defaultFormatter': 'esbenp.prettier-vscode',
@@ -25,6 +27,15 @@ import { execAsync } from '../utils/exec.mjs';
       '[jsonc]': {
         'editor.defaultFormatter': 'esbenp.prettier-vscode',
         'editor.tabSize': 2,
+      },
+      '[go]': {
+        'editor.defaultFormatter': 'golang.go',
+        'editor.insertSpaces': false,
+        'editor.formatOnSave': true,
+        'editor.codeActionsOnSave': {
+          'source.organizeImports': true,
+        },
+        'editor.suggest.snippetsPreventQuickSuggestions': false,
       },
     };
     const hasVscodeDir = await vscodeDirExists();

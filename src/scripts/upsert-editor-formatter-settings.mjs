@@ -37,6 +37,9 @@ import { execAsync } from '../utils/exec.mjs';
         },
         'editor.suggest.snippetsPreventQuickSuggestions': false,
       },
+      '[sql]': {
+        'editor.defaultFormatter': 'mtxr.sqltools',
+      },
     };
     const hasVscodeDir = await vscodeDirExists();
     const hasSettingsFile = await settingsFileExists();

@@ -9,9 +9,10 @@ import { execAsync } from '../utils/exec.mjs';
     const vscodeDirPath = `${projectDirPath}/.vscode`;
     const settingsFilePath = `${vscodeDirPath}/settings.json`;
     const editorSettings = {
+      "editor.formatOnSave": true,
+      'editor.defaultFormatter': 'esbenp.prettier-vscode',
       'go.testOnSave': true,
       'go.lintOnSave': 'package',
-      'editor.defaultFormatter': 'esbenp.prettier-vscode',
       '[javascript]': {
         'editor.defaultFormatter': 'esbenp.prettier-vscode',
         'editor.tabSize': 2,
@@ -40,6 +41,7 @@ import { execAsync } from '../utils/exec.mjs';
       '[sql]': {
         'editor.defaultFormatter': 'mtxr.sqltools',
       },
+      "thunder-client.saveToWorkspace": true
     };
     const hasVscodeDir = await vscodeDirExists();
     const hasSettingsFile = await settingsFileExists();

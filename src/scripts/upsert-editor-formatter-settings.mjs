@@ -1,6 +1,6 @@
-import { mkdir, readFile, stat, writeFile } from 'fs/promises';
-import { getPathFromArgs } from '../utils/cli-args.mjs';
-import { execAsync } from '../utils/exec.mjs';
+import { mkdir, readFile, stat, writeFile } from "fs/promises";
+import { getPathFromArgs } from "../utils/cli-args.mjs";
+import { execAsync } from "../utils/exec.mjs";
 
 // Pass in the project directory via CLI arg path=SOME_DIR_PATH
 (async () => {
@@ -10,39 +10,44 @@ import { execAsync } from '../utils/exec.mjs';
     const settingsFilePath = `${vscodeDirPath}/settings.json`;
     const editorSettings = {
       "editor.formatOnSave": true,
-      'editor.defaultFormatter': 'esbenp.prettier-vscode',
-      'go.testOnSave': true,
-      'go.lintOnSave': 'package',
-      '[javascript]': {
-        'editor.defaultFormatter': 'esbenp.prettier-vscode',
-        'editor.tabSize': 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "go.testOnSave": true,
+      "go.lintOnSave": "package",
+      "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      '[typescript]': {
-        'editor.defaultFormatter': 'esbenp.prettier-vscode',
-        'editor.tabSize': 2,
+      "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      '[json]': {
-        'editor.defaultFormatter': 'esbenp.prettier-vscode',
-        'editor.tabSize': 2,
+      "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      '[jsonc]': {
-        'editor.defaultFormatter': 'esbenp.prettier-vscode',
-        'editor.tabSize': 2,
+      "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      '[go]': {
-        'editor.defaultFormatter': 'golang.go',
-        'editor.insertSpaces': false,
-        'editor.formatOnSave': true,
-        'editor.codeActionsOnSave': {
-          'source.organizeImports': true,
-        },
-        'editor.suggest.snippetsPreventQuickSuggestions': false,
+      "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      '[sql]': {
-        'editor.defaultFormatter': 'mtxr.sqltools',
+      "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
       },
-      "thunder-client.saveToWorkspace": true
+      "[go]": {
+        "editor.defaultFormatter": "golang.go",
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": { "source.organizeImports": true },
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+      },
+      "[sql]": { "editor.defaultFormatter": "mtxr.sqltools" },
+      "thunder-client.saveToWorkspace": true,
     };
+
     const hasVscodeDir = await vscodeDirExists();
     const hasSettingsFile = await settingsFileExists();
 
@@ -94,7 +99,7 @@ import { execAsync } from '../utils/exec.mjs';
     }
 
     async function readSettingsfile() {
-      return readFile(settingsFilePath, { encoding: 'utf8' });
+      return readFile(settingsFilePath, { encoding: "utf8" });
     }
   } catch (error) {
     console.log(error);
